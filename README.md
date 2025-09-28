@@ -48,7 +48,7 @@ Turizm Dijitalleşme Projesi, bir turizm acentesinin işlerini hem kullanıcı h
   <tr>
     <td><img src="assets/screenshots/home.png" width="150"/></td>
     <td><img src="assets/screenshots/kampanyalar.png" width="150"/></td>
-    <td><img src="assets/screenshots/otelsecekleri.png" width="150"/></td>
+    <td><img src="assets/screenshots/otelsecenekleri.png" width="150"/></td>
     <td><img src="assets/screenshots/turdetaylari.png" width="150"/></td>
     <td><img src="assets/screenshots/turdetaylari2.png" width="150"/></td>
     <td><img src="assets/screenshots/turlar.png" width="150"/></td>

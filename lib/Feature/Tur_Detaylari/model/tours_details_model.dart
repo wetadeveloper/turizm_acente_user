@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TurDetayModel {
   final String turID;
-  final String acentaID;
   final String turAdi;
   final String acentaAdi;
   final String turSehri;
@@ -21,7 +20,6 @@ class TurDetayModel {
 
   TurDetayModel({
     required this.turID,
-    required this.acentaID,
     required this.turAdi,
     required this.acentaAdi,
     required this.turSehri,
@@ -40,7 +38,6 @@ class TurDetayModel {
   factory TurDetayModel.fromMap(Map<String, dynamic> map) {
     return TurDetayModel(
       turID: map['turID'] ?? '',
-      acentaID: map['acenta_id'] ?? '',
       turAdi: map['tur_adi'] ?? '',
       acentaAdi: map['acenta_adi'] ?? '',
       currency: map['currency'] ?? 'Dolar',
@@ -62,7 +59,6 @@ class TurDetayModel {
 
   TurDetayModel copyWith({
     String? turID,
-    String? acentaID,
     String? turAdi,
     String? acentaAdi,
     Map<String, int>? odaFiyatlari,
@@ -80,7 +76,6 @@ class TurDetayModel {
   }) {
     return TurDetayModel(
       turID: turID ?? this.turID,
-      acentaID: acentaID ?? this.acentaID,
       turAdi: turAdi ?? this.turAdi,
       acentaAdi: acentaAdi ?? this.acentaAdi,
       turSehri: turSehri ?? this.turSehri,

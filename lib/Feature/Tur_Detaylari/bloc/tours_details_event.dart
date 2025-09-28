@@ -9,15 +9,13 @@ abstract class TurDetayEvent extends Equatable {
 
 class LoadTurDetay extends TurDetayEvent {
   final Map<String, dynamic> turData;
-  final String acentaID;
   final String turID;
 
   const LoadTurDetay({
     required this.turData,
-    required this.acentaID,
     required this.turID,
   });
 
   @override
-  List<Object> get props => [turData, acentaID, turID];
+  List<Object> get props => [turData, turID];
 }

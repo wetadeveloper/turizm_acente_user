@@ -84,7 +84,6 @@ class _TurDetayView extends StatelessWidget {
                       productPrice: fiyatText ?? 'Fiyat Bilgisi Yok',
                       productHost: tur.acentaAdi,
                       productDate: formattedDate,
-                      acentaID: tur.acentaID,
                       acentaAdi: tur.acentaAdi,
                       turSehri: tur.turSehri,
                       currency: tur.currency,

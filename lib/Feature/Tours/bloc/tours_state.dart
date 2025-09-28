@@ -12,7 +12,7 @@ class ToursInitial extends ToursState {}
 class ToursLoading extends ToursState {}
 
 class ToursLoaded extends ToursState {
-  final List<Tours> tours;
+  final List<ToursModel> tours;
   const ToursLoaded({required this.tours});
   @override
   List<Object> get props => [tours];

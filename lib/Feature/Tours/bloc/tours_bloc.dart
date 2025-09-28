@@ -17,7 +17,7 @@ class ToursBloc extends Bloc<ToursEvent, ToursState> {
     emit(ToursLoading());
 
     try {
-      final List<Tours> tours = await _firestoreService.fetchTours(event.serviceTitle);
+      final List<ToursModel> tours = await _firestoreService.fetchTours(event.serviceTitle);
       emit(ToursLoaded(tours: tours));
     } catch (e) {
       emit(ToursError(message: 'Turlar yüklenirken bir hata oluştu: $e'));

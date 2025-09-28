@@ -5,7 +5,7 @@ class LightTheme {
   ThemeData get lightThemeData => ThemeData.light().copyWith(
         primaryColor: LightThemeColors.primaryColor,
         appBarTheme: const AppBarTheme(
-          color: LightThemeColors.appBarColor,
+          backgroundColor: LightThemeColors.appBarColor,
           titleTextStyle: TextStyle(
             color: LightThemeColors.titleColor,
             fontSize: 24.0,

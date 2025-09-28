@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:selamet/Feature/Tours/View/card_widget.dart';
+import 'package:selamet/Feature/Tours/model/tours_model.dart';
 import 'package:selamet/Feature/Tur_Detaylari/bloc/tours_details_bloc.dart';
 import 'package:selamet/Feature/Tur_Detaylari/bloc/tours_details_event.dart';
 import 'package:selamet/Feature/Tur_Detaylari/service/tur_detay_repository.dart';
@@ -30,14 +31,6 @@ class TurlarAnasayfaWidget extends StatelessWidget {
     final int kapasite = data['kapasite'] ?? 0;
     final bool turYayinda = data['tur_yayinda'] ?? false;
     final bool turOnayi = data['tur_onayi'] ?? false;
-    final List<dynamic>? otelSecenekleri = data['otelSecenekleri'];
-    int fiyat = 0;
-
-    if (otelSecenekleri != null && otelSecenekleri.isNotEmpty) {
-      final Map<String, dynamic> ilkOtel = Map<String, dynamic>.from(otelSecenekleri[0]);
-      final Map<String, dynamic> odaFiyatlari = Map<String, dynamic>.from(ilkOtel['odaFiyatlari'] ?? {});
-      fiyat = odaFiyatlari['Dortlu'] ?? 0;
-    }
 
     // Null kontrolü
     if (tarih == null) return Container();
@@ -51,14 +44,16 @@ class TurlarAnasayfaWidget extends StatelessWidget {
       return Container(); // turu gösterme
     }
 
+    // ToursModel'e dönüştür → CardWidget içinde kullanılacak
+    final turModel = ToursModel.fromMap(data);
+
     return Visibility(
       visible: isTurVisible && kapasite > 0,
       child: InkWell(
         onTap: () {
           final String? turID = data['turID'] ?? data['tur_id'];
-          final String? acentaID = data['acenta_id'];
 
-          if (kapasite > 0 && turID != null && acentaID != null) {
+          if (kapasite > 0 && turID != null) {
             final repository = TurDetayRepository();
 
             Navigator.push(
@@ -68,7 +63,6 @@ class TurlarAnasayfaWidget extends StatelessWidget {
                   create: (_) => TurDetayBloc(repository)
                     ..add(LoadTurDetay(
                       turData: data,
-                      acentaID: acentaID,
                       turID: turID,
                     )),
                   child: TurDetaySayfasi(turData: data),
@@ -102,8 +96,8 @@ class TurlarAnasayfaWidget extends StatelessWidget {
           acentaAdi: acentaAdi,
           formattedDate: formattedDate,
           kapasite: kapasite,
-          fiyat: fiyat,
           data: data,
+          turModel: turModel,
         ),
       ),
     );

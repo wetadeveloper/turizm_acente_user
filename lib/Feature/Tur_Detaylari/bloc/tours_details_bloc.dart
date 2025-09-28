@@ -14,7 +14,7 @@ class TurDetayBloc extends Bloc<TurDetayEvent, TurDetayState> {
   Future<void> _onLoadTurDetay(LoadTurDetay event, Emitter<TurDetayState> emit) async {
     emit(TurDetayLoading());
     try {
-      final images = await repository.getTurImages(event.acentaID, event.turID);
+      final images = await repository.getTurImages(event.turID);
       final model = TurDetayModel.fromMap(event.turData);
       emit(TurDetayLoaded(model.copyWith(imageUrls: images)));
     } catch (e) {

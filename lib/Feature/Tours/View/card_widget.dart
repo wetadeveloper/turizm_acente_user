@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:selamet/Feature/Tours/model/tours_model.dart';
+import 'package:selamet/Feature/Tours/viewModel/tours_view_model.dart';
 
 class AnasayfaTurlarCardWidget extends StatelessWidget {
   const AnasayfaTurlarCardWidget({
@@ -10,8 +11,8 @@ class AnasayfaTurlarCardWidget extends StatelessWidget {
     required this.acentaAdi,
     required this.formattedDate,
     required this.kapasite,
-    required this.fiyat,
-    required Map<String, dynamic> data,
+    required this.data,
+    required this.turModel,
   });
 
   final String yolculukTuru;
@@ -20,23 +21,8 @@ class AnasayfaTurlarCardWidget extends StatelessWidget {
   final String acentaAdi;
   final String formattedDate;
   final int kapasite;
-  final int fiyat;
-
-  Widget getTravelIcon(String travelType) {
-    switch (travelType) {
-      case "Otobüs":
-        return const Icon(FontAwesomeIcons.bus, color: Colors.white, size: 30);
-      case "Uçak":
-        return const Icon(FontAwesomeIcons.planeDeparture, color: Colors.white, size: 30);
-      case "Tren":
-        return const Icon(FontAwesomeIcons.trainTram, color: Colors.white, size: 33);
-      case "Gemi":
-        return const Icon(Icons.directions_boat_filled, color: Colors.white, size: 35);
-
-      default:
-        return Container();
-    }
-  }
+  final ToursModel turModel;
+  final Map<String, dynamic> data;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +36,7 @@ class AnasayfaTurlarCardWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                getTravelIcon(yolculukTuru),
+                TurViewModel().getTravelIcon(yolculukTuru),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: ConstrainedBox(
@@ -126,11 +112,11 @@ class AnasayfaTurlarCardWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '$fiyat TL',
+                  "İki'li oda: ${TurViewModel().getIkiliOdaFiyati(turModel)}",
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ],

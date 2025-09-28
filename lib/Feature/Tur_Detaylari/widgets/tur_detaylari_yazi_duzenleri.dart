@@ -6,7 +6,6 @@ class TourismTileWidget extends StatelessWidget {
   final String productPrice;
   final String productHost;
   final String productDate;
-  final String acentaID;
   final String acentaAdi;
   final String turSehri;
   final String currency;
@@ -17,7 +16,6 @@ class TourismTileWidget extends StatelessWidget {
     required this.productPrice,
     required this.productHost,
     required this.productDate,
-    required this.acentaID,
     required this.acentaAdi,
     required this.turSehri,
     required this.currency,
